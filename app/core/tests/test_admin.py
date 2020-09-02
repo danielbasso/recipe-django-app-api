@@ -1,6 +1,6 @@
+from django.test import TestCase, Client
 from django.contrib.auth import get_user_model
-from django.test import Client, TestCase
-from django.urls.base import reverse
+from django.urls import reverse
 
 
 class AdminSiteTests(TestCase):
@@ -8,15 +8,13 @@ class AdminSiteTests(TestCase):
     def setUp(self):
         self.client = Client()
         self.admin_user = get_user_model().objects.create_superuser(
-            email='test@test.com',
-            password='test123'
+            email='admin@londonappdev.com',
+            password='password123'
         )
-
         self.client.force_login(self.admin_user)
-
         self.user = get_user_model().objects.create_user(
-            email='test2@test.com',
-            password='test123',
+            email='test@londonappdev.com',
+            password='password123',
             name='Test user full name'
         )
 
